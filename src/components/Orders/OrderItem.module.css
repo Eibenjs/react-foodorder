@@ -1,0 +1,116 @@
+.orderItem {
+  background-color: #8a2b06 !important;
+  color: #fff !important;
+  width: 100%;
+  border-radius: 12px !important;
+}
+
+.orderItem svg {
+  color: #fff !important;
+}
+
+.typo {
+  display: flex;
+  gap: 1em;
+  justify-content: space-between;
+}
+
+.typoLeftOrderOwner span {
+  font-weight: bold;
+}
+
+.typoLeft {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  width: auto;
+  max-width: 80%;
+}
+
+.typoLeftMealIn {
+  width: 70%;
+  max-width: 100%;
+  display: flex;
+  gap: 0.5em;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.typoLeftMealImDiv {
+  display: flex;
+  flex-direction: row;
+}
+
+.typoLeftMealImDiv img {
+  border: #661505 5px solid;
+  height: 6em;
+  width: 6em;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.typeLeftMealDet {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-left: 0.3em;
+}
+
+.typeLeftMealDet div {
+  display: flex;
+  flex-direction: column;
+}
+
+.typeLeftMealDetB {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.typeLeftMealDetP {
+  font-size: 1.1em;
+  color: #f59c8c;
+}
+
+.typoRight {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.typoRightTotal {
+  font-size: 1.3em;
+}
+
+.typoRightTotal span {
+  font-weight: bold;
+}
+
+.typoRightButton {
+  display: flex;
+  gap: 0.5em;
+  flex-direction: column;
+}
+
+.typoRightButton button {
+  color: #fff;
+  padding: 0.5em 1em;
+  background-color: #d05700;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* .typoRightButton button {
+  padding: 1.5em;
+  text-align: center;
+  background: #f59c8c;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.typoRightButton button:hover {
+  background: #fff;
+} */

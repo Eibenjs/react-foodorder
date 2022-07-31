@@ -1,0 +1,36 @@
+.button {
+  position: relative;
+  height: 4em;
+  border-radius: 1000px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+.span {
+  width: 60%;
+}
+
+.button::before {
+  content: attr(data-icon);
+  font-size: 2em;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  font-weight: normal;
+  border-radius: 100%;
+  background-color: #d1d1d1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  transition: 0.3s;
+}
+
+.button:hover::before {
+  background-color: #e3563d;
+}
