@@ -5,90 +5,9 @@ import MealItem from './MealItem/MealItem'
 import Card from '../UI/Card'
 import Cart from '../Cart/Cart'
 
-const allCateg = [
-  { name: 'choc', id: 'ca1' },
-  { name: 'anan', id: 'ca2' },
-  { name: 'baban', id: 'ca3' },
-  { name: 'deden', id: 'ca4' },
-  { name: 'cocuk', id: 'ca5' },
-]
-
-const DUMMY_MEALS = [
-  {
-    id: 'm1',
-    name: 'Sushi',
-    description: 'Finest fish and veggies',
-    price: 22.99,
-    category: 'choc',
-    altPic:
-      'https://cdn.discordapp.com/attachments/833414619254620260/999681032796241920/zorrtatak.png',
-  },
-  {
-    id: 'm2',
-    name: 'Schnitzel',
-    description: 'A german specialty!',
-    price: 16.5,
-    category: 'choc',
-    altPic:
-      'https://cdn.discordapp.com/attachments/833414619254620260/999681032796241920/zorrtatak.png',
-  },
-  {
-    id: 'm3',
-    name: 'Barbecue Burger',
-    description: 'American, raw, meaty',
-    price: 12.99,
-    category: 'choc',
-    altPic:
-      'https://cdn.discordapp.com/attachments/833414619254620260/999681032796241920/zorrtatak.png',
-  },
-  {
-    id: 'm4',
-    name: 'Green Bowl',
-    description: 'Healthy...and green...',
-    price: 18.99,
-    category: 'deden',
-    altPic:
-      'https://cdn.discordapp.com/attachments/833414619254620260/999681032796241920/zorrtatak.png',
-  },
-  {
-    id: 'm5',
-    name: 'tas kebabi',
-    description: 'Healthy...and green...',
-    price: 18.99,
-    category: 'choc',
-    altPic:
-      'https://cdn.discordapp.com/attachments/833414619254620260/999681032796241920/zorrtatak.png',
-  },
-  {
-    id: 'm6',
-    name: 'kelle paca',
-    description: 'Healthy...and green...',
-    price: 18.99,
-    category: 'baban',
-    altPic:
-      'https://cdn.discordapp.com/attachments/833414619254620260/999681032796241920/zorrtatak.png',
-  },
-  {
-    id: 'm7',
-    name: 'tavuk izgara',
-    description: 'Healthy...and green...',
-    price: 18.99,
-    category: 'cocuk',
-    altPic:
-      'https://cdn.discordapp.com/attachments/833414619254620260/999681032796241920/zorrtatak.png',
-  },
-  {
-    id: 'm8',
-    name: 'corba',
-    description: 'Healthy...and green...',
-    price: 18.99,
-    category: 'cocuk',
-    altPic:
-      'https://cdn.discordapp.com/attachments/833414619254620260/999681032796241920/zorrtatak.png',
-  },
-]
-
 const AvailableMeals = (props) => {
+  const DUMMY_MEALS = props.meals
+  const allCateg = props.category
   const [currentMeals, setCurrentMeals] = useState(DUMMY_MEALS)
   const [suggestions, setSuggestions] = useState([])
 
