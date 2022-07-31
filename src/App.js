@@ -4,12 +4,10 @@ import Header from './components/Layout/Header'
 import Meals from './components/Meals/Meals'
 import CartProvider from './store/CartProvider'
 import Order from './components/Orders/Order'
+import Nui from './nui/nui.component'
 
 function App() {
-<<<<<<< HEAD
   const [hidden, setHidden] = useState(false)
-=======
->>>>>>> 872bd0e9a37fd2120d39845566936417dac908e5
   const [cartIsShown, setCartIsShown] = useState(false)
   const [orderIsShown, setOrderIsShown] = useState(false)
   const [categ, setCateg] = useState([
@@ -94,7 +92,6 @@ function App() {
     },
   ])
 
-<<<<<<< HEAD
   const closePage = () => {
     setHidden(true)
     Nui.send('exit_focus', {}) // kapatma yollanilan
@@ -120,8 +117,6 @@ function App() {
     }
   })
 
-=======
->>>>>>> 872bd0e9a37fd2120d39845566936417dac908e5
   const showCartHandler = () => {
     setCartIsShown(true)
   }
@@ -139,7 +134,6 @@ function App() {
   }
 
   return (
-<<<<<<< HEAD
     <div
       style={{
         display: hidden ? 'none' : 'block',
@@ -163,18 +157,6 @@ function App() {
         </main>
       </CartProvider>
     </div>
-=======
-    <CartProvider>
-      <Header onShowOrder={toggleOrder} onShowCart={showCartHandler} />
-      <main>
-        {orderIsShown ? (
-          <Order />
-        ) : (
-          <Meals cartOnClose={hideCartHandler} cartIsShown={cartIsShown} />
-        )}
-      </main>
-    </CartProvider>
->>>>>>> 872bd0e9a37fd2120d39845566936417dac908e5
   )
 }
 
