@@ -4,22 +4,21 @@ import Header from './components/Layout/Header'
 import Meals from './components/Meals/Meals'
 import CartProvider from './store/CartProvider'
 import Order from './components/Orders/Order'
-import {Nui} from './nui/nui.component'
+import { Nui } from './nui/nui.component'
 
 function Reducer(state, action) {
   switch (action.type) {
     case 'ADD_TO_CART':
       return {
-        ...state,
         cart: action.value,
       }
     default:
       return state
   }
 }
-      
+
 function App() {
-  const [hidden, setHidden] = useState(true)
+  const [hidden, setHidden] = useState(false)
   const [cartIsShown, setCartIsShown] = useState(false)
   const [orderIsShown, setOrderIsShown] = useState(false)
   const [categ, setCateg] = useState([
@@ -29,7 +28,7 @@ function App() {
     { name: 'deden', id: 'ca4' },
     { name: 'cocuk', id: 'ca5' },
   ])
-  
+
   const [employe, setEmploye] = useState(false)
 
   const [state, dispatch] = useReducer(Reducer, {
@@ -54,7 +53,12 @@ function App() {
       // acilirken yollanan
       console.log(JSON.stringify(event.data.meals))
       console.log(JSON.stringify(event.data.category))
-      dispatch({type:"ADD_TO_CART", value: event.data.meals})
+
+      dispatch({
+        type: 'ADD_TO_CART',
+        value: event.data.meals,
+      })
+
       setCateg(event.data.category)
       setOrderIsShown(event.data.job) // boolean
       setEmploye(event.data.job) // boolean
@@ -89,7 +93,11 @@ function App() {
       }}
     >
       <CartProvider hidden={hidden}>
-        <Header onShowOrder={toggleOrder} onShowCart={showCartHandler} employe={employe} />
+        <Header
+          onShowOrder={toggleOrder}
+          onShowCart={showCartHandler}
+          employe={employe}
+        />
         <main>
           {orderIsShown ? (
             <Order />

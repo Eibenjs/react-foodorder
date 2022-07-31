@@ -1,37 +1,59 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useReducer, useState } from 'react'
 
 import classes from './AvailableMeals.module.css'
 import MealItem from './MealItem/MealItem'
 import Card from '../UI/Card'
 import Cart from '../Cart/Cart'
 
+const Reducer = (state, action) => {
+  if ((action.type = 'SET_MEAL')) {
+    return {
+      meals: action.value,
+    }
+  }
+}
+
 const AvailableMeals = (props) => {
-  const meals = props.meals
+  const [state, dispatch] = useReducer(Reducer, {
+    meals: [],
+  })
+
+  useEffect(() => {
+    dispatch({
+      type: 'SET_MEAL',
+      value: props.meals,
+    })
+  }, [props.meals])
+
+  const meals = state.meals
   // const [meals, setMeal] = useState([])
   const allCateg = props.category
-  const [currentMeals, setCurrentMeals] = useState(meals)
   const [suggestions, setSuggestions] = useState([])
-
-
   const [checked, setChecked] = useState([])
   const getMealsWithCategories = () => {
     if (checked.length === 0) {
-      setCurrentMeals(meals)
+      dispatch({
+        type: 'SET_MEAL',
+        value: props.meals,
+      })
       return
     }
-    const newS = meals.filter((meal) =>
-      checked.includes(meal.category)
-    ).map((i) => {
-      return {
-        id: i.id,
-        name: i.name,
-        description: i.description,
-        price: i.price,
-        category: i.category,
-        altPic: i.altPic,
-      }
+    const newS = state.meals
+      .filter((meal) => checked.includes(meal.category))
+      .map((i) => {
+        return {
+          id: i.id,
+          name: i.name,
+          description: i.description,
+          price: i.price,
+          category: i.category,
+          altPic: i.altPic,
+        }
+      })
+    dispatch({
+      type: 'SET_MEAL',
+      value: newS,
     })
-    setCurrentMeals(newS)
   }
   useEffect(() => {
     getMealsWithCategories()
@@ -54,21 +76,23 @@ const AvailableMeals = (props) => {
     const indexItem = meals.findIndex((object) => {
       return object.id === item.id
     })
-    const newSuggestion = meals.filter((item) => {
-      return (
-        item.category === meals[indexItem].category &&
-        item.name !== meals[indexItem].name
-      )
-    }).map((i) => {
-      return {
-        id: i.id,
-        name: i.name,
-        description: i.description,
-        price: i.price,
-        category: i.category,
-        altPic: i.altPic,
-      }
-    })
+    const newSuggestion = meals
+      .filter((item) => {
+        return (
+          item.category === meals[indexItem].category &&
+          item.name !== meals[indexItem].name
+        )
+      })
+      .map((i) => {
+        return {
+          id: i.id,
+          name: i.name,
+          description: i.description,
+          price: i.price,
+          category: i.category,
+          altPic: i.altPic,
+        }
+      })
     if (newSuggestion.length > 0) {
       setSuggestions(newSuggestion)
     } else {
@@ -89,7 +113,7 @@ const AvailableMeals = (props) => {
       </li>
     )
   })
-  const mealsList = currentMeals.map((meal) => (
+  let mealsList = state.meals.map((meal) => (
     <MealItem
       id={meal.id}
       key={meal.id}
