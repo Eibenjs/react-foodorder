@@ -1,21 +1,41 @@
-import React, { useState } from 'react'
+import React, { useState, useReducer } from 'react'
 
 import Header from './components/Layout/Header'
 import Meals from './components/Meals/Meals'
 import CartProvider from './store/CartProvider'
 import Order from './components/Orders/Order'
-import { Nui } from './nui/nui.component'
+import {Nui} from './nui/nui.component'
 
+function Reducer(state, action) {
+  switch (action.type) {
+    case 'ADD_TO_CART':
+      return {
+        ...state,
+        cart: action.value,
+      }
+    default:
+      return state
+  }
+}
+      
 function App() {
-<<<<<<< HEAD
-=======
-  const [hidden, setHidden] = useState(false)
->>>>>>> 3edf5c3252b0d76c14190a2d44b2fd9a7bf3b716
+  const [hidden, setHidden] = useState(true)
   const [cartIsShown, setCartIsShown] = useState(false)
   const [orderIsShown, setOrderIsShown] = useState(false)
+  const [categ, setCateg] = useState([
+    { name: 'choc', id: 'ca1' },
+    { name: 'anan', id: 'ca2' },
+    { name: 'baban', id: 'ca3' },
+    { name: 'deden', id: 'ca4' },
+    { name: 'cocuk', id: 'ca5' },
+  ])
+  
+  const [employe, setEmploye] = useState(false)
 
-<<<<<<< HEAD
-=======
+  const [state, dispatch] = useReducer(Reducer, {
+    cart: [],
+  })
+
   const closePage = () => {
     setHidden(true)
     Nui.send('exit_focus', {}) // kapatma yollanilan
@@ -32,18 +52,18 @@ function App() {
 
     if (type === 'SHOW_PAGE') {
       // acilirken yollanan
-      console.log('meals ' + event.data.meals)
-      console.log('categ ' + event.data.category)
-      setMeals(event.data.meals)
+      console.log(JSON.stringify(event.data.meals))
+      console.log(JSON.stringify(event.data.category))
+      dispatch({type:"ADD_TO_CART", value: event.data.meals})
       setCateg(event.data.category)
-      setOrderIsShown(event.data.jobs) // boolean
+      setOrderIsShown(event.data.job) // boolean
+      setEmploye(event.data.job) // boolean
       setHidden(false)
     } else if (type === 'CLOSE_PAGE') {
       closePage()
     }
   })
 
->>>>>>> 3edf5c3252b0d76c14190a2d44b2fd9a7bf3b716
   const showCartHandler = () => {
     setCartIsShown(true)
   }
@@ -61,18 +81,6 @@ function App() {
   }
 
   return (
-<<<<<<< HEAD
-    <CartProvider>
-      <Header onShowOrder={toggleOrder} onShowCart={showCartHandler} />
-      <main>
-        {orderIsShown ? (
-          <Order />
-        ) : (
-          <Meals cartOnClose={hideCartHandler} cartIsShown={cartIsShown} />
-        )}
-      </main>
-    </CartProvider>
-=======
     <div
       style={{
         display: hidden ? 'none' : 'block',
@@ -81,14 +89,14 @@ function App() {
       }}
     >
       <CartProvider hidden={hidden}>
-        <Header onShowOrder={toggleOrder} onShowCart={showCartHandler} />
+        <Header onShowOrder={toggleOrder} onShowCart={showCartHandler} employe={employe} />
         <main>
           {orderIsShown ? (
             <Order />
           ) : (
             <Meals
               category={categ}
-              meals={meals}
+              meals={state.cart}
               cartOnClose={hideCartHandler}
               cartIsShown={cartIsShown}
             />
@@ -96,7 +104,6 @@ function App() {
         </main>
       </CartProvider>
     </div>
->>>>>>> 3edf5c3252b0d76c14190a2d44b2fd9a7bf3b716
   )
 }
 
