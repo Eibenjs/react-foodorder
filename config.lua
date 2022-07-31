@@ -1,10 +1,18 @@
 config = {}
 
+config.avaibleJobs = {
+    "burgershot",
+    "uwucafe",
+    "pizzaria",
+    "pezevenk",
+    "test"
+}
+
 config.burgershotCategories = {
-    [1] = {name = "Burger", "hamburger"},
-    [2] = {name = "Tatlı", "tatli"},
-    [3] = {name = "İçecek", "icecek"},
-    [4] = {name = "Kızartma", "kizartma"}
+    [1] = {name = "Burger", id = "burger"},
+    [2] = {name = "Tatlı", id = "tatli"},
+    [3] = {name = "İçecek", id = "icecek"},
+    [4] = {name = "Kızartma", id = "kizartma"}
 }
 
 config.burgershotMeals = {
@@ -13,6 +21,7 @@ config.burgershotMeals = {
         name = "Moneyshot",
         description = "Cok guzel hamburger..",
         category = "burger",
+        price = 31.00,
         altPic = "https://cdn.discordapp.com/attachments/833414619254620260/999681032796241920/zorrtatak.png" 
     },
     [2] = {
@@ -20,6 +29,7 @@ config.burgershotMeals = {
         name = "Fowl Burger",
         description = "Cok guzel hamburger fowl..",
         category = "burger",
+        price = 4.56,
         altPic = "https://cdn.discordapp.com/attachments/833414619254620260/999681032796241920/zorrtatak.png" 
     },
     [3] = {
@@ -27,6 +37,7 @@ config.burgershotMeals = {
         name = "Heartstopper",
         description = "Cok guzel hamburger heartstopper..",
         category = "burger",
+        price = 6.87,
         altPic = "https://cdn.discordapp.com/attachments/833414619254620260/999681032796241920/zorrtatak.png" 
     },
     [4] = {
@@ -34,6 +45,7 @@ config.burgershotMeals = {
         name = "Patates kızartması",
         description = "Cok guzel patates kızartması..",
         category = "kizartma",
+        price = 7.38,
         altPic = "https://cdn.discordapp.com/attachments/833414619254620260/999681032796241920/zorrtatak.png" 
     },
     [5] = {
@@ -41,6 +53,7 @@ config.burgershotMeals = {
         name = "Slushy",
         description = "slushy o..",
         category = "tatli",
+        price = 24.18,
         altPic = "https://cdn.discordapp.com/attachments/833414619254620260/999681032796241920/zorrtatak.png" 
     },
     [5] = {
@@ -48,6 +61,7 @@ config.burgershotMeals = {
         name = "Burgershot Kola",
         description = "bs ozel kola..",
         category = "icecek",
+        price = 11.42,
         altPic = "https://cdn.discordapp.com/attachments/833414619254620260/999681032796241920/zorrtatak.png" 
     }
 }

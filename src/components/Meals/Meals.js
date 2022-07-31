@@ -6,8 +6,6 @@ const Meals = (props) => {
   return (
     <React.Fragment>
       <AvailableMeals
-        meals={props.meals}
-        category={props.category}
         cartIsShown={props.cartIsShown}
         onClose={props.cartOnClose}
       />

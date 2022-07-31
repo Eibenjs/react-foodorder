@@ -10,9 +10,25 @@ Citizen.CreateThread(function()
     while Kafi.Functions.GetPlayerData().job == nil do 
         Citizen.Wait(100)
     end
-    PlayerData = Kafi.Functions.GetPlayerData()
+    SetJobData()
     PlayerLoaded = true
 end)
+
+RegisterNetEvent("kafi:Client:OnPlayerLoaded")
+AddEventHandler("kafi:Client:OnPlayerLoaded", function()
+    SetJobData()
+end)
+
+RegisterNetEvent('kafi:Client:OnJobUpdate')
+AddEventHandler('kafi:Client:OnJobUpdate', function(JobInfo)
+    SetJobData()
+end)
+
+function SetJobData()
+    PlayerData = Kafi.Functions.GetPlayerData()
+    PlayerLoaded = true
+end
+
 
 local ui = false
 
@@ -24,11 +40,21 @@ end)
 function toggleUI()
     print(ui)
     if ui then 
+        local accessOrdersPage = false
+        for k, v in pairs(config.avaibleJobs) do 
+            print(v)
+            if v == PlayerData.job.name then 
+                accessOrdersPage = true
+                break
+            end
+        end
+        print(accessOrdersPage)
         SetNuiFocus(true, true)
         SendNUIMessage({
             type = "SHOW_PAGE", 
-            categorys = config.burgershotCategories,
-            meals = config.burgershotMeals
+            category = config.burgershotCategories,
+            meals = config.burgershotMeals,
+            job = accessOrdersPage
         })
     else 
         SetNuiFocus(false, false)
