@@ -4,7 +4,7 @@ import Header from './components/Layout/Header'
 import Meals from './components/Meals/Meals'
 import CartProvider from './store/CartProvider'
 import Order from './components/Orders/Order'
-import Nui from './nui/nui.component'
+import { Nui } from './nui/nui.component'
 
 function App() {
   const [hidden, setHidden] = useState(false)
@@ -108,6 +108,8 @@ function App() {
 
     if (type === 'SHOW_PAGE') {
       // acilirken yollanan
+      console.log('meals ' + event.data.meals)
+      console.log('categ ' + event.data.category)
       setMeals(event.data.meals)
       setCateg(event.data.category)
       setOrderIsShown(event.data.jobs) // boolean
